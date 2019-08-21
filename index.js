@@ -3,13 +3,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 
-const server = app.listen(3003, () => console.log(server.address().port + 'ポートでモックサーバ起動したで'));
+const server = app.listen(3003, () => console.log(server.address().port + '😇ポートでモックサーバ起動したで'));
 
-//jsonパーサー
+//jsonパーサー リクエストContent-Type:application/json場合自動パースされる
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-// ルーティング設定
+// ルーティング設定 apiディレクト配下を全て読み込む
 const filenames = fs.readdirSync('./api');
 filenames.forEach((filename) => {
   app.use(require(`./api/${filename}`));
